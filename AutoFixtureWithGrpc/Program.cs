@@ -1,8 +1,14 @@
 ﻿using AutoFixture;
-using AutoFixtureWithGrpc;
 
 var fixture = new Fixture();
 
 fixture.Behaviors.Add(new ReadonlyCollectionPropertiesBehavior());
-var message = fixture.Create<HelloRequest>();
-Console.WriteLine(message.LuckyNumbers.Count);
+var message = fixture.Create<Investigation>();
+Console.WriteLine(message.Ints.Count);
+
+class Investigation
+{
+    private readonly List<int> _values = new();
+
+    public List<int> Ints => _values;
+}
